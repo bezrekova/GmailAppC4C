@@ -1,0 +1,30 @@
+<html>
+<head>
+    <script src="https://apis.google.com/js/client.js"></script>
+    <script>
+        function start() {
+            console.log('API initiated successfully');
+            var email = sap.byd.ui.mashup.context.inport.email;
+            sendToOutport;
+
+        };
+
+        function sendToOutport(location) {
+            sap.byd.ui.mashup.fireResultUpdate({
+                'Status': 'Development'
+            })
+        }
+
+        sap.byd.ui.mashup.onContextUpdate = function () {
+            var oContext = sap.byd.ui.mashup.context;
+            console.log("Context was changed " + oContext.inport.email);
+        }
+
+        // Loads the JavaScript client library and invokes `start` afterwards.
+        gapi.load('client', start);
+    </script>
+</head>
+<body>
+<div id="results"><h1>It is alive!!!!</h1></div>
+</body>
+</html>
